@@ -99,10 +99,10 @@ public class WebcamAccess extends Application {
                             final String value = "Got Image at " + new Date();
                             System.out.println(value);
                             final SimpleStringProperty urlStr = new SimpleStringProperty("");
+                            final SimpleStringProperty read = new SimpleStringProperty("");
                             try {
-                                String name = "temp";
-                                Map.Entry<Boolean, String> f = null;
-                                f = ocr.process(image, name, false, sb);
+                                String name = "";
+                                Map.Entry<Boolean, String> f = ocr.process(image, name, false, sb);
 
                                 if (f == null) {
                                     f = ocr.process(image, name, true, sb);
@@ -112,7 +112,10 @@ public class WebcamAccess extends Application {
                                     }
                                 }
                                 if (f != null && f.getValue() != null) {
+                                    System.out.println("OCR: " + sb.toString());
+
                                     urlStr.setValue(f.getValue());
+                                    read.setValue(sb.toString());
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -122,7 +125,7 @@ public class WebcamAccess extends Application {
                                 @Override
                                 public void run() {
                                     imageView.setImage(image2);
-                                    status.setText(value);
+                                    status.setText(read.getValue() + "\n" + value);
 
                                     String newUrl = urlStr.getValue();
                                     if (!url.equals(newUrl) && newUrl != null && newUrl.length() != 0) {
