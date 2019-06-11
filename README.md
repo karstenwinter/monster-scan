@@ -6,7 +6,14 @@ Scan Pokemon Cards using OCR and view their prices online
 
 <br />
 
-Start using:
+Supported Languages:
+
+<ul>
+  <li>English</li>
+  <li>German</li>
+</ul
+
+Start using double click or (if you are interested in debug output):
 <pre>java -jar "path/to/jar-file/monster-scan.jar"</pre>
 
 <br />
