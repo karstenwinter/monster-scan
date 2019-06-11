@@ -56,7 +56,7 @@ class Pokemon {
                 if (isDE) {
                     de = cont;
                 }
-                if (isEN) {
+                if (isEN && !"".equalsIgnoreCase(de)) {
                     en = cont;
                     m.put(de, en);
                 }

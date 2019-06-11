@@ -73,7 +73,7 @@ class OCR {
         sb.append(res);
         boolean found = false;
         for (Map.Entry<String, String> entry : names.entrySet()) {
-            if (res.contains(entry.getKey())) {
+            if (res.contains(clean(entry.getKey())) || res.contains(clean(entry.getValue()))) {
                 String link = "https://www.cardmarket.com/de/Pokemon/Products/Search?mode=gallery&searchString=" + entry.getValue();
                 System.out.println((withTres ? "T " : "C ") + name + "=>" + link);
                 return new AbstractMap.SimpleImmutableEntry<Boolean, String>(withTres, link);
